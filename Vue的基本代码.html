@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./lib/vue.js"></script>
+    <title>Document</title>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+    <div id="app" >
+        <p v-text="msg"></p>
+		<!--默认没有闪烁问题，会覆盖元素中原本的内容-->
+        <p v-cloak>{{msg}}</p>
+		
+		<input value="button" type="button" v-bind:title="title+'wo shi jia de'" v-on:click="show"
+		v-on:mouseover="show"/>
+		<!--v-bind:是vue中提供的用于绑定属性的指令-->
+		<!--v-on：事件绑定机制 -->
+    </div>
+    <script>
+        
+        //创建一个Vue实例
+        new Vue({
+        	el:'#app',
+			data:{
+				msg:'Hello World',
+				title:'我是按钮',
+				msg2:'<h1>wo shi h1</h1>'
+			},
+			methods:{//这个属性中定义了当前vue实例中所有可用的方法
+				show:function (){
+					alert('Hello');
+				}
+			}
+        })
+    </script>
+</body>
+</html>
